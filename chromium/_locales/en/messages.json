@@ -428,6 +428,12 @@
     "aria2_max_upload_title": {
         "message": "Set the maximum upload speed for all concurrent tasks"
     },
+    "aria2_header": {
+        "message": "Header"
+    },
+    "aria2_header_title": {
+        "message": "HTTP request header, Put one item per line, each item containing \"header name: header value\""
+    },
     "aria2_http_retry": {
         "message": "Max Retries"
     },

@@ -88,7 +88,7 @@ async function aria2DownloadHandler(url, options, referer, hostname, storeId) {
 }
 
 async function aria2DownloadPrompt(slim) {
-    return slim ? getPopupWindow('/pages/newdld/newdld.html?prompt', 299) : getPopupWindow('/pages/newdld/newdld.html', 482);
+    return slim ? getPopupWindow('/pages/newdld/newdld.html?prompt', 255) : getPopupWindow('/pages/newdld/newdld.html', 535);
 }
 
 async function aria2ImagesPrompt(tabId) {
@@ -100,7 +100,7 @@ async function aria2SetCookies(url, storeId) {
     var result = 'Cookie:';
     var cookies = await getRequestCookies(url, storeId);
     cookies.forEach(({name, value}) => result += ' ' + name + '=' + value + ';');
-    return [result];
+    return cookies.length === 0 ? '' : [result];
 }
 
 chrome.webNavigation.onBeforeNavigate.addListener(({tabId, url, frameId}) => {
@@ -412,7 +412,7 @@ function getPopupWindow(url, offsetHeight) {
             chrome.windows.create({
                 url, left, top,
                 type: 'popup',
-                width: 698,
+                width: 710,
                 height: offsetHeight
             }, (popup) => resolve(popup.tabs[0].id));
         });

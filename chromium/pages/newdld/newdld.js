@@ -50,7 +50,7 @@ async function downloadSubmit() {
 
 async function downloadExpand() {
     chrome.windows.getCurrent(({id, top, height}) => {
-        chrome.windows.update(id, {top: top - 92, height: height + 183});
+        chrome.windows.update(id, {top: top - 90, height: height + 280});
         downloader.className = 'extra';
         countdown.textContent = countdown.textContent * 1 + 90;
     });
@@ -102,7 +102,7 @@ function aria2DownloadSlimmed({url, options = {}}, jsonrpc) {
         }
     }, 1000);
     entry.value = Array.isArray(url) ? url.join('\n') : url;
-    return {header: options['header'], ...settings.disposition({...jsonrpc, ...options})};
+    return settings.disposition({...jsonrpc, ...options});
 }
 
 chrome.runtime.sendMessage({action: activity}, ({storage, jsonrpc, params}) => {
